@@ -1,0 +1,161 @@
+{
+  "isRoot": true,
+  "endpointType": 0,
+  "minimal": false,
+  "prefix": "app",
+  "idFormat": 0,
+  "idDotNetType": 0,
+  "isMicroserviceArchitecture": false,
+  "projects": [],
+  "rootDirectory": "C:\\projects\\FacilityManagement",
+  "solutionName": "FacilityManagement",
+  "solutionFileName": "FacilityManagement.sln",
+  "apiFullPath": "C:\\projects\\FacilityManagement\\src\\FacilityManagement.Api\\FacilityManagement.Api.csproj",
+  "rootNamespace": "FacilityManagement",
+  "domainNamespace": "FacilityManagement.Core",
+  "applicationNamespace": "FacilityManagement.Core",
+  "infrastructureNamespace": "FacilityManagement.Infrastructure",
+  "apiNamespace": "FacilityManagement.Api",
+  "domainDirectory": "C:\\projects\\FacilityManagement\\src\\FacilityManagement.SharedKernel",
+  "applicationDirectory": "C:\\projects\\FacilityManagement\\src\\FacilityManagement.Core",
+  "infrastructureDirectory": "C:\\projects\\FacilityManagement\\src\\FacilityManagement.Infrastructure",
+  "apiDirectory": "C:\\projects\\FacilityManagement\\src\\FacilityManagement.Api",
+  "unitTestsDirectory": "C:\\projects\\FacilityManagement\\tests\\FacilityManagement.UnitTests",
+  "testingDirectory": "C:\\projects\\FacilityManagement\\tests\\FacilityManagement.Testing",
+  "appDirectories": [],
+  "buildingBlocksCoreNamespace": "BuildingBlocks.Core",
+  "buildingBlocksEventStoreNamespace": "BuildingBlocks.EventStore",
+  "sourceFolder": "src",
+  "testFolder": "tests",
+  "dbContextName": "FacilityManagementDbContext",
+  "port": 5000,
+  "sslPort": 5001,
+  "plugins": null,
+  "entities": [],
+  "resources": [
+    {
+      "properties": [],
+      "entities": [],
+      "name": "MaintenanceRequest",
+      "idPropertyName": "MaintenanceRequestId",
+      "idPropertyType": "Guid"
+    },
+    {
+      "properties": [],
+      "entities": [],
+      "name": "Profile",
+      "idPropertyName": "ProfileId",
+      "idPropertyType": "Guid"
+    },
+    {
+      "properties": [
+        {
+          "accessModifier": "public",
+          "type": "Guid",
+          "accessors": [
+            {
+              "accessModifier": null,
+              "type": 0
+            },
+            {
+              "accessModifier": "private",
+              "type": 1
+            }
+          ],
+          "name": "DigitalAssetId",
+          "required": true,
+          "key": true
+        },
+        {
+          "accessModifier": "public",
+          "type": "string",
+          "accessors": [
+            {
+              "accessModifier": null,
+              "type": 0
+            },
+            {
+              "accessModifier": "private",
+              "type": 1
+            }
+          ],
+          "name": "Name",
+          "required": true,
+          "key": false
+        },
+        {
+          "accessModifier": "public",
+          "type": "byte[]",
+          "accessors": [
+            {
+              "accessModifier": null,
+              "type": 0
+            },
+            {
+              "accessModifier": "private",
+              "type": 1
+            }
+          ],
+          "name": "Bytes",
+          "required": true,
+          "key": false
+        },
+        {
+          "accessModifier": "public",
+          "type": "string",
+          "accessors": [
+            {
+              "accessModifier": null,
+              "type": 0
+            },
+            {
+              "accessModifier": "private",
+              "type": 1
+            }
+          ],
+          "name": "ContentType",
+          "required": true,
+          "key": false
+        },
+        {
+          "accessModifier": "public",
+          "type": "float",
+          "accessors": [
+            {
+              "accessModifier": null,
+              "type": 0
+            },
+            {
+              "accessModifier": "private",
+              "type": 1
+            }
+          ],
+          "name": "Height",
+          "required": true,
+          "key": false
+        },
+        {
+          "accessModifier": "public",
+          "type": "float",
+          "accessors": [
+            {
+              "accessModifier": null,
+              "type": 0
+            },
+            {
+              "accessModifier": "private",
+              "type": 1
+            }
+          ],
+          "name": "Width",
+          "required": true,
+          "key": false
+        }
+      ],
+      "entities": [],
+      "name": "DigitalAsset",
+      "idPropertyName": "DigitalAssetId",
+      "idPropertyType": "Guid"
+    }
+  ]
+}

@@ -1,0 +1,1283 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "FacilityManagement",
+    "description": "",
+    "termsOfService": "https://example.com/terms",
+    "contact": {
+      "name": "",
+      "email": ""
+    },
+    "license": {
+      "name": "Use under MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    },
+    "version": "v1"
+  },
+  "paths": {
+    "/api/DigitalAsset/{digitalAssetId}": {
+      "get": {
+        "tags": [
+          "DigitalAsset"
+        ],
+        "summary": "Get DigitalAsset by id.",
+        "description": "Get DigitalAsset by id.",
+        "operationId": "getDigitalAssetById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "digitalAssetId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetDigitalAssetByIdResponse"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "DigitalAsset"
+        ],
+        "summary": "Delete DigitalAsset.",
+        "description": "Delete DigitalAsset.",
+        "operationId": "removeDigitalAsset",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "digitalAssetId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RemoveDigitalAssetResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/DigitalAsset": {
+      "get": {
+        "tags": [
+          "DigitalAsset"
+        ],
+        "summary": "Get DigitalAssets.",
+        "description": "Get DigitalAssets.",
+        "operationId": "getDigitalAssets",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetDigitalAssetsResponse"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "DigitalAsset"
+        ],
+        "summary": "Create DigitalAsset.",
+        "description": "Create DigitalAsset.",
+        "operationId": "createDigitalAsset",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/CreateDigitalAssetRequest"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/CreateDigitalAssetResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "DigitalAsset"
+        ],
+        "summary": "Update DigitalAsset.",
+        "description": "Update DigitalAsset.",
+        "operationId": "updateDigitalAsset",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/UpdateDigitalAssetRequest"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UpdateDigitalAssetResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/DigitalAsset/page/{pageSize}/{index}": {
+      "get": {
+        "tags": [
+          "DigitalAsset"
+        ],
+        "summary": "Get DigitalAsset Page.",
+        "description": "Get DigitalAsset Page.",
+        "operationId": "getDigitalAssetsPage",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "pageSize",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "path",
+            "name": "index",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetDigitalAssetsPageResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/MaintenanceRequest/{maintenanceRequestId}": {
+      "get": {
+        "tags": [
+          "MaintenanceRequest"
+        ],
+        "summary": "Get MaintenanceRequest by id.",
+        "description": "Get MaintenanceRequest by id.",
+        "operationId": "getMaintenanceRequestById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "maintenanceRequestId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetMaintenanceRequestByIdResponse"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "MaintenanceRequest"
+        ],
+        "summary": "Delete MaintenanceRequest.",
+        "description": "Delete MaintenanceRequest.",
+        "operationId": "removeMaintenanceRequest",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "maintenanceRequestId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RemoveMaintenanceRequestResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/MaintenanceRequest": {
+      "get": {
+        "tags": [
+          "MaintenanceRequest"
+        ],
+        "summary": "Get MaintenanceRequests.",
+        "description": "Get MaintenanceRequests.",
+        "operationId": "getMaintenanceRequests",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetMaintenanceRequestsResponse"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "MaintenanceRequest"
+        ],
+        "summary": "Create MaintenanceRequest.",
+        "description": "Create MaintenanceRequest.",
+        "operationId": "createMaintenanceRequest",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/CreateMaintenanceRequestRequest"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/CreateMaintenanceRequestResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "MaintenanceRequest"
+        ],
+        "summary": "Update MaintenanceRequest.",
+        "description": "Update MaintenanceRequest.",
+        "operationId": "updateMaintenanceRequest",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/UpdateMaintenanceRequestRequest"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UpdateMaintenanceRequestResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/MaintenanceRequest/page/{pageSize}/{index}": {
+      "get": {
+        "tags": [
+          "MaintenanceRequest"
+        ],
+        "summary": "Get MaintenanceRequest Page.",
+        "description": "Get MaintenanceRequest Page.",
+        "operationId": "getMaintenanceRequestsPage",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "pageSize",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "path",
+            "name": "index",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetMaintenanceRequestsPageResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/Profile/{profileId}": {
+      "get": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "Get Profile by id.",
+        "description": "Get Profile by id.",
+        "operationId": "getProfileById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profileId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetProfileByIdResponse"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "Delete Profile.",
+        "description": "Delete Profile.",
+        "operationId": "removeProfile",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profileId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RemoveProfileResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/Profile": {
+      "get": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "Get Profiles.",
+        "description": "Get Profiles.",
+        "operationId": "getProfiles",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetProfilesResponse"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "Create Profile.",
+        "description": "Create Profile.",
+        "operationId": "createProfile",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/CreateProfileRequest"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/CreateProfileResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "Update Profile.",
+        "description": "Update Profile.",
+        "operationId": "updateProfile",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/UpdateProfileRequest"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UpdateProfileResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/Profile/page/{pageSize}/{index}": {
+      "get": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "Get Profile Page.",
+        "description": "Get Profile Page.",
+        "operationId": "getProfilesPage",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "pageSize",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "path",
+            "name": "index",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetProfilesPageResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Address": {
+      "type": "object",
+      "properties": {
+        "street": {
+          "type": "string",
+          "readOnly": true
+        },
+        "unit": {
+          "format": "int32",
+          "type": "integer",
+          "readOnly": true
+        },
+        "city": {
+          "type": "string",
+          "readOnly": true
+        },
+        "province": {
+          "type": "string",
+          "readOnly": true
+        },
+        "postalCode": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "CreateDigitalAssetRequest": {
+      "type": "object",
+      "properties": {
+        "digitalAsset": {
+          "$ref": "#/definitions/DigitalAssetDto"
+        }
+      }
+    },
+    "CreateDigitalAssetResponse": {
+      "type": "object",
+      "properties": {
+        "digitalAsset": {
+          "$ref": "#/definitions/DigitalAssetDto"
+        },
+        "validationErrors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "CreateMaintenanceRequestRequest": {
+      "type": "object",
+      "properties": {
+        "maintenanceRequest": {
+          "$ref": "#/definitions/MaintenanceRequestDto"
+        }
+      }
+    },
+    "CreateMaintenanceRequestResponse": {
+      "type": "object",
+      "properties": {
+        "maintenanceRequest": {
+          "$ref": "#/definitions/MaintenanceRequestDto"
+        },
+        "validationErrors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "CreateProfileRequest": {
+      "type": "object",
+      "properties": {
+        "profile": {
+          "$ref": "#/definitions/ProfileDto"
+        }
+      }
+    },
+    "CreateProfileResponse": {
+      "type": "object",
+      "properties": {
+        "profile": {
+          "$ref": "#/definitions/ProfileDto"
+        },
+        "validationErrors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "DigitalAssetDto": {
+      "type": "object",
+      "properties": {
+        "digitalAssetId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "bytes": {
+          "format": "byte",
+          "type": "string"
+        },
+        "contentType": {
+          "type": "string"
+        },
+        "height": {
+          "format": "float",
+          "type": "number"
+        },
+        "width": {
+          "format": "float",
+          "type": "number"
+        }
+      }
+    },
+    "GetDigitalAssetByIdResponse": {
+      "type": "object",
+      "properties": {
+        "digitalAsset": {
+          "$ref": "#/definitions/DigitalAssetDto"
+        },
+        "validationErrors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "GetDigitalAssetsPageResponse": {
+      "type": "object",
+      "properties": {
+        "length": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "entities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DigitalAssetDto"
+          }
+        },
+        "validationErrors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "GetDigitalAssetsResponse": {
+      "type": "object",
+      "properties": {
+        "digitalAssets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DigitalAssetDto"
+          }
+        },
+        "validationErrors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "GetMaintenanceRequestByIdResponse": {
+      "type": "object",
+      "properties": {
+        "maintenanceRequest": {
+          "$ref": "#/definitions/MaintenanceRequestDto"
+        },
+        "validationErrors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "GetMaintenanceRequestsPageResponse": {
+      "type": "object",
+      "properties": {
+        "length": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "entities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MaintenanceRequestDto"
+          }
+        },
+        "validationErrors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "GetMaintenanceRequestsResponse": {
+      "type": "object",
+      "properties": {
+        "maintenanceRequests": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MaintenanceRequestDto"
+          }
+        },
+        "validationErrors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "GetProfileByIdResponse": {
+      "type": "object",
+      "properties": {
+        "profile": {
+          "$ref": "#/definitions/ProfileDto"
+        },
+        "validationErrors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "GetProfilesPageResponse": {
+      "type": "object",
+      "properties": {
+        "length": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "entities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProfileDto"
+          }
+        },
+        "validationErrors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "GetProfilesResponse": {
+      "type": "object",
+      "properties": {
+        "profiles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProfileDto"
+          }
+        },
+        "validationErrors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "MaintenanceRequestCommentDto": {
+      "type": "object",
+      "properties": {
+        "maintenanceRequestCommentId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "maintenanceRequestId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        },
+        "created": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "createdById": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
+    "MaintenanceRequestDigitalAssetDto": {
+      "type": "object",
+      "properties": {
+        "maintenanceRequestId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "digitalAssetId": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
+    "MaintenanceRequestDto": {
+      "type": "object",
+      "properties": {
+        "maintenanceRequestId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "requestedByProfileId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "requestedByName": {
+          "type": "string"
+        },
+        "date": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "address": {
+          "$ref": "#/definitions/Address"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "unattendedUnitEntryAllowed": {
+          "type": "boolean"
+        },
+        "receivedByProfileId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "receivedByName": {
+          "type": "string"
+        },
+        "receivedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "workDetails": {
+          "type": "string"
+        },
+        "workStarted": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "workCompleted": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "workCompletedByName": {
+          "type": "string"
+        },
+        "unitEntered": {
+          "$ref": "#/definitions/UnitEntered"
+        },
+        "requestedByProfile": {
+          "$ref": "#/definitions/ProfileDto"
+        },
+        "status": {
+          "$ref": "#/definitions/MaintenanceRequestStatus"
+        },
+        "comments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MaintenanceRequestCommentDto"
+          }
+        },
+        "digitalAssets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MaintenanceRequestDigitalAssetDto"
+          }
+        }
+      }
+    },
+    "MaintenanceRequestStatus": {
+      "format": "int32",
+      "type": "integer"
+    },
+    "ProblemDetails": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "status": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "detail": {
+          "type": "string"
+        },
+        "instance": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": { }
+    },
+    "ProfileDto": {
+      "type": "object",
+      "properties": {
+        "profileId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        }
+      }
+    },
+    "RemoveDigitalAssetResponse": {
+      "type": "object",
+      "properties": {
+        "digitalAsset": {
+          "$ref": "#/definitions/DigitalAssetDto"
+        },
+        "validationErrors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "RemoveMaintenanceRequestResponse": {
+      "type": "object",
+      "properties": {
+        "maintenanceRequest": {
+          "$ref": "#/definitions/MaintenanceRequestDto"
+        },
+        "validationErrors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "RemoveProfileResponse": {
+      "type": "object",
+      "properties": {
+        "profile": {
+          "$ref": "#/definitions/ProfileDto"
+        },
+        "validationErrors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "UnitEntered": {
+      "format": "int32",
+      "enum": [
+        0,
+        1,
+        2
+      ],
+      "type": "integer"
+    },
+    "UpdateDigitalAssetRequest": {
+      "type": "object",
+      "properties": {
+        "digitalAsset": {
+          "$ref": "#/definitions/DigitalAssetDto"
+        }
+      }
+    },
+    "UpdateDigitalAssetResponse": {
+      "type": "object",
+      "properties": {
+        "digitalAsset": {
+          "$ref": "#/definitions/DigitalAssetDto"
+        },
+        "validationErrors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "UpdateMaintenanceRequestRequest": {
+      "type": "object",
+      "properties": {
+        "maintenanceRequest": {
+          "$ref": "#/definitions/MaintenanceRequestDto"
+        }
+      }
+    },
+    "UpdateMaintenanceRequestResponse": {
+      "type": "object",
+      "properties": {
+        "maintenanceRequest": {
+          "$ref": "#/definitions/MaintenanceRequestDto"
+        },
+        "validationErrors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "UpdateProfileRequest": {
+      "type": "object",
+      "properties": {
+        "profile": {
+          "$ref": "#/definitions/ProfileDto"
+        }
+      }
+    },
+    "UpdateProfileResponse": {
+      "type": "object",
+      "properties": {
+        "profile": {
+          "$ref": "#/definitions/ProfileDto"
+        },
+        "validationErrors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
