@@ -1,5 +1,3 @@
-using System;
-
 namespace FacilityManagement.Core
 {
     public class MaintenanceRequestDto
@@ -8,7 +6,7 @@ namespace FacilityManagement.Core
         public Guid? RequestedByProfileId { get; set; }
         public string? RequestedByName { get; set; }
         public DateTime Date { get; set; }
-        public Address? Address { get; set; }
+        public AddressDto? Address { get; set; }
         public string? Phone { get; set; }
         public string? Description { get; set; }
         public bool? UnattendedUnitEntryAllowed { get; set; }
@@ -20,7 +18,7 @@ namespace FacilityManagement.Core
         public DateTime WorkCompleted { get; set; }
         public string? WorkCompletedByName { get; set; }
         public UnitEntered UnitEntered { get; set; }
-        public ProfileDto RequestedByProfile { get; set; }
+        public ProfileDto? RequestedByProfile { get; set; }
         public MaintenanceRequestStatus Status { get; set; }
         public List<MaintenanceRequestCommentDto> Comments { get; set; } = new();
         public List<MaintenanceRequestDigitalAssetDto> DigitalAssets { get; set; } = new();

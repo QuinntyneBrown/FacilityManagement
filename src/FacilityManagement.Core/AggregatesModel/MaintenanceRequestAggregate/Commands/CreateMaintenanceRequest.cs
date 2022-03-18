@@ -48,7 +48,10 @@ namespace FacilityManagement.Core
             maintenanceRequest.RequestedByProfileId = new ProfileId(request.MaintenanceRequest.RequestedByProfileId.Value);
             maintenanceRequest.RequestedByName = request.MaintenanceRequest.RequestedByName;
             maintenanceRequest.Date = request.MaintenanceRequest.Date;
-            maintenanceRequest.Address = request.MaintenanceRequest.Address;
+
+            var addressDto = request.MaintenanceRequest.Address;
+            maintenanceRequest.Address = Address.Create(addressDto.Street,addressDto.City,addressDto.Province, addressDto.PostalCode).Value;
+            
             maintenanceRequest.Phone = request.MaintenanceRequest.Phone;
             maintenanceRequest.Description = request.MaintenanceRequest.Description;
             maintenanceRequest.UnattendedUnitEntryAllowed = request.MaintenanceRequest.UnattendedUnitEntryAllowed.Value;

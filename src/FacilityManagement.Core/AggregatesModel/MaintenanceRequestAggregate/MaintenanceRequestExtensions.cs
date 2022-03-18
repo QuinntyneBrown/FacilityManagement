@@ -12,7 +12,7 @@ namespace FacilityManagement.Core
                 RequestedByProfileId = Guid.Parse(maintenanceRequest.RequestedByProfileId.ToString()),
                 RequestedByName = maintenanceRequest.RequestedByName,
                 Date = maintenanceRequest.Date,
-                Address = maintenanceRequest.Address,
+                Address = maintenanceRequest.Address.ToDto(),
                 Phone = maintenanceRequest.Phone,
                 Description = maintenanceRequest.Description,
                 UnattendedUnitEntryAllowed = maintenanceRequest.UnattendedUnitEntryAllowed,

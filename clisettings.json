@@ -48,6 +48,20 @@
       "idPropertyType": "Guid"
     },
     {
+      "properties": [],
+      "entities": [],
+      "name": "DigitalAsset",
+      "idPropertyName": "DigitalAssetId",
+      "idPropertyType": "Guid"
+    },
+    {
+      "properties": [],
+      "entities": [],
+      "name": "User",
+      "idPropertyName": "UserId",
+      "idPropertyType": "Guid"
+    },
+    {
       "properties": [
         {
           "accessModifier": "public",
@@ -62,7 +76,7 @@
               "type": 1
             }
           ],
-          "name": "DigitalAssetId",
+          "name": "RoleId",
           "required": true,
           "key": true
         },
@@ -82,79 +96,11 @@
           "name": "Name",
           "required": true,
           "key": false
-        },
-        {
-          "accessModifier": "public",
-          "type": "byte[]",
-          "accessors": [
-            {
-              "accessModifier": null,
-              "type": 0
-            },
-            {
-              "accessModifier": "private",
-              "type": 1
-            }
-          ],
-          "name": "Bytes",
-          "required": true,
-          "key": false
-        },
-        {
-          "accessModifier": "public",
-          "type": "string",
-          "accessors": [
-            {
-              "accessModifier": null,
-              "type": 0
-            },
-            {
-              "accessModifier": "private",
-              "type": 1
-            }
-          ],
-          "name": "ContentType",
-          "required": true,
-          "key": false
-        },
-        {
-          "accessModifier": "public",
-          "type": "float",
-          "accessors": [
-            {
-              "accessModifier": null,
-              "type": 0
-            },
-            {
-              "accessModifier": "private",
-              "type": 1
-            }
-          ],
-          "name": "Height",
-          "required": true,
-          "key": false
-        },
-        {
-          "accessModifier": "public",
-          "type": "float",
-          "accessors": [
-            {
-              "accessModifier": null,
-              "type": 0
-            },
-            {
-              "accessModifier": "private",
-              "type": 1
-            }
-          ],
-          "name": "Width",
-          "required": true,
-          "key": false
         }
       ],
       "entities": [],
-      "name": "DigitalAsset",
-      "idPropertyName": "DigitalAssetId",
+      "name": "Role",
+      "idPropertyName": "RoleId",
       "idPropertyType": "Guid"
     }
   ]

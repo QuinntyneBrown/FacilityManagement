@@ -11,6 +11,8 @@ namespace FacilityManagement.Infrastructure.Data
         public DbSet<MaintenanceRequest> MaintenanceRequests { get; private set; }
         public DbSet<Profile> Profiles { get; private set; }
         public DbSet<DigitalAsset> DigitalAssets { get; private set; }
+        public DbSet<User> Users { get; private set; }
+        public DbSet<Role> Roles { get; private set; }
         public FacilityManagementDbContext(DbContextOptions options)
             :base(options) { }
 

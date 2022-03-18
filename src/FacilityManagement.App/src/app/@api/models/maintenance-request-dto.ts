@@ -1,12 +1,12 @@
 /* tslint:disable */
-import { Address } from './address';
+import { AddressDto } from './address-dto';
 import { MaintenanceRequestCommentDto } from './maintenance-request-comment-dto';
 import { MaintenanceRequestDigitalAssetDto } from './maintenance-request-digital-asset-dto';
 import { ProfileDto } from './profile-dto';
 import { MaintenanceRequestStatus } from './maintenance-request-status';
 import { UnitEntered } from './unit-entered';
 export interface MaintenanceRequestDto {
-  address?: Address;
+  address?: AddressDto;
   comments?: Array<MaintenanceRequestCommentDto>;
   date?: string;
   description?: string;

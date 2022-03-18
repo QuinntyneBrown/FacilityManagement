@@ -1,5 +1,5 @@
 /* tslint:disable */
-export interface Address {
+export interface AddressDto {
   city?: string;
   postalCode?: string;
   province?: string;

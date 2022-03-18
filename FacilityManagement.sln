@@ -1,31 +1,34 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30114.105
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0C57F1B7-5EC1-4EA1-B63A-5342CC510393}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacilityManagement.Api", "src\FacilityManagement.Api\FacilityManagement.Api.csproj", "{33B9E970-8886-42D9-B8DA-ADE836F4EC06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FacilityManagement.Api", "src\FacilityManagement.Api\FacilityManagement.Api.csproj", "{33B9E970-8886-42D9-B8DA-ADE836F4EC06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacilityManagement.SharedKernel", "src\FacilityManagement.SharedKernel\FacilityManagement.SharedKernel.csproj", "{CBC0DE13-345D-4E4D-8C9B-E0A8201C317A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FacilityManagement.SharedKernel", "src\FacilityManagement.SharedKernel\FacilityManagement.SharedKernel.csproj", "{CBC0DE13-345D-4E4D-8C9B-E0A8201C317A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacilityManagement.Core", "src\FacilityManagement.Core\FacilityManagement.Core.csproj", "{AA0254BC-0C8E-43A4-9F54-2291E2EC067E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FacilityManagement.Core", "src\FacilityManagement.Core\FacilityManagement.Core.csproj", "{AA0254BC-0C8E-43A4-9F54-2291E2EC067E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacilityManagement.Infrastructure", "src\FacilityManagement.Infrastructure\FacilityManagement.Infrastructure.csproj", "{B96B0552-9048-4322-A5B8-3E1B667D8DE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FacilityManagement.Infrastructure", "src\FacilityManagement.Infrastructure\FacilityManagement.Infrastructure.csproj", "{B96B0552-9048-4322-A5B8-3E1B667D8DE1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{2732F3D2-5ACD-45F9-8B37-97D8AA91E6C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacilityManagement.Testing", "tests\FacilityManagement.Testing\FacilityManagement.Testing.csproj", "{0C3FD252-24BB-4F86-83B2-BF10FF6B4F5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FacilityManagement.Testing", "tests\FacilityManagement.Testing\FacilityManagement.Testing.csproj", "{0C3FD252-24BB-4F86-83B2-BF10FF6B4F5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacilityManagement.UnitTests", "tests\FacilityManagement.UnitTests\FacilityManagement.UnitTests.csproj", "{A85A264D-6730-472A-820B-C38F841209BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FacilityManagement.UnitTests", "tests\FacilityManagement.UnitTests\FacilityManagement.UnitTests.csproj", "{A85A264D-6730-472A-820B-C38F841209BA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{325669C4-C06C-4D8C-847D-9CA126CF2229}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		clisettings.json = clisettings.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{33B9E970-8886-42D9-B8DA-ADE836F4EC06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -53,6 +56,9 @@ Global
 		{A85A264D-6730-472A-820B-C38F841209BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A85A264D-6730-472A-820B-C38F841209BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{33B9E970-8886-42D9-B8DA-ADE836F4EC06} = {0C57F1B7-5EC1-4EA1-B63A-5342CC510393}
 		{CBC0DE13-345D-4E4D-8C9B-E0A8201C317A} = {0C57F1B7-5EC1-4EA1-B63A-5342CC510393}
@@ -60,5 +66,8 @@ Global
 		{B96B0552-9048-4322-A5B8-3E1B667D8DE1} = {0C57F1B7-5EC1-4EA1-B63A-5342CC510393}
 		{0C3FD252-24BB-4F86-83B2-BF10FF6B4F5D} = {2732F3D2-5ACD-45F9-8B37-97D8AA91E6C1}
 		{A85A264D-6730-472A-820B-C38F841209BA} = {2732F3D2-5ACD-45F9-8B37-97D8AA91E6C1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0B2D839F-CC1C-45F2-9A8C-43722829E7FD}
 	EndGlobalSection
 EndGlobal
