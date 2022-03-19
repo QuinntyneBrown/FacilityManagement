@@ -28,7 +28,7 @@ namespace FacilityManagement.Core
             PostalCode = postalCode;
         }
 
-        private Address(string street, int unit, string city, string province, string postalCode)
+        private Address(string street, int? unit, string city, string province, string postalCode)
             : this(street, city, province, postalCode)
         {
             Unit = unit;
@@ -40,7 +40,7 @@ namespace FacilityManagement.Core
             return Result.Success(new Address(street, city, province, postalCode));
         }
 
-        public static Result<Address> Create(string street, int unit, string city, string province, string postalCode)
+        public static Result<Address> Create(string street, int? unit, string city, string province, string postalCode)
         {
             return Result.Success(new Address(street, unit, city, province, postalCode));
         }

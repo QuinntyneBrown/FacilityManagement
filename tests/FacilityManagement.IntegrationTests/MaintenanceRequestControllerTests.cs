@@ -19,15 +19,14 @@ namespace FacilityManagement.IntegrationTests
         [Fact]
         public async Task Should_Create()
         {
-
             var profile = _fixture.DbContext.Profiles.FirstOrDefault();
 
             var client = _fixture.CreateAuthenticatedClient();
 
-            var request = new CreateMaintenanceRequestRequest()
-            {
-
-            };
+            var request = new CreateMaintenanceRequestRequest(
+                profile.ProfileId.Value,
+                $"{profile.FirstName} {profile.LastName}",
+                "21 Jump Street", "Toronto", "Ontario", "M1B 1W1", "416 967-1111", "", true);
 
             var response = await client.PostAsAsync<CreateMaintenanceRequestRequest, CreateMaintenanceRequestResponse>(Endpoints.Post.Create, request);
 

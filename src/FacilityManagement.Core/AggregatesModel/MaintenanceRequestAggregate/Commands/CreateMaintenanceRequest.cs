@@ -22,7 +22,7 @@ namespace FacilityManagement.Core
         }
     }
 
-    [AuthorizeResourceOperation(nameof(Operations.Write), nameof(Aggregates.MaintenanceRequest))]
+    //[AuthorizeResourceOperation(nameof(Operations.Write), nameof(Aggregates.MaintenanceRequest))]
     public class CreateMaintenanceRequestRequest: IRequest<CreateMaintenanceRequestResponse>
     {
         public Guid RequestedByProfileId { get; set; }
@@ -48,7 +48,6 @@ namespace FacilityManagement.Core
             UnattendedUnitEntryAllowed = unattendedUnitEntryAllowed;
         }
 
-
     }
 
     public class CreateMaintenanceRequestResponse: ResponseBase
@@ -73,7 +72,7 @@ namespace FacilityManagement.Core
             {
                 RequestedByProfileId = request.RequestedByProfileId,
                 RequestedByName = request.RequestedByName,
-                Address = Address.Create(request.Address.Street, request.Address.Unit.Value, request.Address.City, request.Address.Province, request.Address.PostalCode).Value,
+                Address = Address.Create(request.Address.Street, request.Address.Unit, request.Address.City, request.Address.Province, request.Address.PostalCode).Value,
                 Phone = request.Phone,
                 Description = request.Description,
                 UnattendedUnitEntryAllowed = request.UnattendedUnitEntryAllowed

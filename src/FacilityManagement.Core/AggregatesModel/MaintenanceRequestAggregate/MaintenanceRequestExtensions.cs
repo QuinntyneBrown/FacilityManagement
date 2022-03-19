@@ -24,7 +24,7 @@ namespace FacilityManagement.Core
                 WorkCompleted = maintenanceRequest.WorkCompleted,
                 WorkCompletedByName = maintenanceRequest.WorkCompletedByName,
                 UnitEntered = maintenanceRequest.UnitEntered,
-                RequestedByProfile = maintenanceRequest.RequestedByProfile.ToDto(),
+                RequestedByProfile = maintenanceRequest.RequestedByProfile?.ToDto(),
                 Status = maintenanceRequest.Status,
                 Comments = maintenanceRequest.Comments.ToDtos(),
                 DigitalAssets = maintenanceRequest.DigitalAssets.ToDtos(),
