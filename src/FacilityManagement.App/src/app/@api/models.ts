@@ -1,4 +1,7 @@
+export { AccessRight } from './models/access-right';
 export { AddressDto } from './models/address-dto';
+export { AuthenticateRequest } from './models/authenticate-request';
+export { AuthenticateResponse } from './models/authenticate-response';
 export { CreateDigitalAssetRequest } from './models/create-digital-asset-request';
 export { CreateDigitalAssetResponse } from './models/create-digital-asset-response';
 export { CreateMaintenanceRequestRequest } from './models/create-maintenance-request-request';
@@ -29,6 +32,8 @@ export { MaintenanceRequestCommentDto } from './models/maintenance-request-comme
 export { MaintenanceRequestDigitalAssetDto } from './models/maintenance-request-digital-asset-dto';
 export { MaintenanceRequestDto } from './models/maintenance-request-dto';
 export { MaintenanceRequestStatus } from './models/maintenance-request-status';
+export { Privilege } from './models/privilege';
+export { PrivilegeId } from './models/privilege-id';
 export { ProblemDetails } from './models/problem-details';
 export { Profile } from './models/profile';
 export { ProfileDto } from './models/profile-dto';

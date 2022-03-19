@@ -1,12 +1,8 @@
-using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
 using FacilityManagement.Core;
 using MediatR;
-using System;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Annotations;
+using System.Net;
 using System.Net.Mime;
 
 namespace FacilityManagement.Api.Controllers
@@ -79,7 +75,25 @@ namespace FacilityManagement.Api.Controllers
         
             return await _mediator.Send(request, cancellationToken);
         }
-        
+
+        [SwaggerOperation(
+            Summary = "Authenticate User.",
+            Description = @"Authenticate User."
+        )]
+        [HttpPost("token", Name = "authenticate")]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(AuthenticateResponse), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<AuthenticateResponse>> Token([FromBody] AuthenticateRequest request, CancellationToken cancellationToken)
+        {
+            _logger.LogInformation(
+                "----- Sending command: {CommandName}: ({@Command})",
+                nameof(AuthenticateRequest),
+                request);
+
+            return await _mediator.Send(request, cancellationToken);
+        }
+
         [SwaggerOperation(
             Summary = "Get User Page.",
             Description = @"Get User Page."

@@ -25,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		clisettings.json = clisettings.json
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FacilityManagement.IntegrationTests", "tests\FacilityManagement.IntegrationTests\FacilityManagement.IntegrationTests.csproj", "{02A6A53D-9D39-4F3D-B491-7DD8F7C78C62}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{A85A264D-6730-472A-820B-C38F841209BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A85A264D-6730-472A-820B-C38F841209BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A85A264D-6730-472A-820B-C38F841209BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02A6A53D-9D39-4F3D-B491-7DD8F7C78C62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02A6A53D-9D39-4F3D-B491-7DD8F7C78C62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02A6A53D-9D39-4F3D-B491-7DD8F7C78C62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02A6A53D-9D39-4F3D-B491-7DD8F7C78C62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +72,7 @@ Global
 		{B96B0552-9048-4322-A5B8-3E1B667D8DE1} = {0C57F1B7-5EC1-4EA1-B63A-5342CC510393}
 		{0C3FD252-24BB-4F86-83B2-BF10FF6B4F5D} = {2732F3D2-5ACD-45F9-8B37-97D8AA91E6C1}
 		{A85A264D-6730-472A-820B-C38F841209BA} = {2732F3D2-5ACD-45F9-8B37-97D8AA91E6C1}
+		{02A6A53D-9D39-4F3D-B491-7DD8F7C78C62} = {2732F3D2-5ACD-45F9-8B37-97D8AA91E6C1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B2D839F-CC1C-45F2-9A8C-43722829E7FD}

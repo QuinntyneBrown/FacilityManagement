@@ -25,6 +25,10 @@ namespace FacilityManagement.Core
         public List<MaintenanceRequestComment> Comments { get; set; } = new();
         public List<MaintenanceRequestDigitalAsset> DigitalAssets { get; set; } = new();
 
+        private MaintenanceRequest()
+        {
+
+        }
         protected override void EnsureValidState()
         {
 

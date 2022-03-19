@@ -14,6 +14,8 @@ import { CreateUserResponse } from '../models/create-user-response';
 import { CreateUserRequest } from '../models/create-user-request';
 import { UpdateUserResponse } from '../models/update-user-response';
 import { UpdateUserRequest } from '../models/update-user-request';
+import { AuthenticateResponse } from '../models/authenticate-response';
+import { AuthenticateRequest } from '../models/authenticate-request';
 import { GetUsersPageResponse } from '../models/get-users-page-response';
 @Injectable({
   providedIn: 'root',
@@ -24,6 +26,7 @@ class UserService extends __BaseService {
   static readonly getUsersPath = '/api/User';
   static readonly createUserPath = '/api/User';
   static readonly updateUserPath = '/api/User';
+  static readonly authenticatePath = '/api/User/token';
   static readonly getUsersPagePath = '/api/User/page/{pageSize}/{index}';
 
   constructor(
@@ -237,6 +240,48 @@ class UserService extends __BaseService {
   updateUser(body?: UpdateUserRequest): __Observable<UpdateUserResponse> {
     return this.updateUserResponse(body).pipe(
       __map(_r => _r.body as UpdateUserResponse)
+    );
+  }
+
+  /**
+   * Authenticate User.
+   *
+   * Authenticate User.
+   * @param body undefined
+   * @return Success
+   */
+  authenticateResponse(body?: AuthenticateRequest): __Observable<__StrictHttpResponse<AuthenticateResponse>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    __body = body;
+    let req = new HttpRequest<any>(
+      'POST',
+      this.rootUrl + `/api/User/token`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<AuthenticateResponse>;
+      })
+    );
+  }
+  /**
+   * Authenticate User.
+   *
+   * Authenticate User.
+   * @param body undefined
+   * @return Success
+   */
+  authenticate(body?: AuthenticateRequest): __Observable<AuthenticateResponse> {
+    return this.authenticateResponse(body).pipe(
+      __map(_r => _r.body as AuthenticateResponse)
     );
   }
 

@@ -3,6 +3,7 @@ using FacilityManagement.SharedKernel.Identity;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using static FacilityManagement.Core.CoreConstants;
 
 namespace FacilityManagement.Core
 {
@@ -20,7 +21,7 @@ namespace FacilityManagement.Core
         }
     }
 
-    [AuthorizeResourceOperation(nameof(Operations.Write), nameof(Aggregates.User))]
+    [AuthorizeResourceOperation(nameof(Operations.Write), nameof(Aggregates.MaintenanceRequest))]
     public class CreateMaintenanceRequestRequest: IRequest<CreateMaintenanceRequestResponse>
     {
         public Guid RequestedByProfileId { get; set; }
