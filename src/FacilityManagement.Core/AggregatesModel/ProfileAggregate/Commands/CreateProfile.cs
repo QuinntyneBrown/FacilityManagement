@@ -41,13 +41,10 @@ namespace FacilityManagement.Core
     
         public async Task<CreateProfileResponse> Handle(CreateProfileRequest request, CancellationToken cancellationToken)
         {
-            var profile = new Profile();
+            var profile = new Profile(request.Profile.FirstName,request.Profile.LastName, request.Profile.ProfileType);
             
             _context.Profiles.Add(profile);
-            
-            profile.FirstName = request.Profile.FirstName;
-            profile.LastName = request.Profile.LastName;
-            
+              
             await _context.SaveChangesAsync(cancellationToken);
             
             return new ()

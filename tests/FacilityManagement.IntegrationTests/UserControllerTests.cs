@@ -20,11 +20,11 @@ namespace FacilityManagement.IntegrationTests
         {
             var client = _fixture.CreateClient();
 
-            var request = new AuthenticateRequest("quinntyne", "P@ssw0rd");
+            var request = new AuthenticateRequest("Quinntyne", "P@ssw0rd");
 
             var response = await client.PostAsAsync<AuthenticateRequest, AuthenticateResponse>(Endpoints.Post.Authenticate, request);
 
-            Assert.NotNull(response);
+            Assert.NotNull(response.AccessToken);
 
         }
 

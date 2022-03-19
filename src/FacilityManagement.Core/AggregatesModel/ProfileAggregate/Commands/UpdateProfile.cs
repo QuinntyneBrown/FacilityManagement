@@ -43,9 +43,8 @@ namespace FacilityManagement.Core
         public async Task<UpdateProfileResponse> Handle(UpdateProfileRequest request, CancellationToken cancellationToken)
         {
             var profile = await _context.Profiles.SingleAsync(x => x.ProfileId == new ProfileId(request.Profile.ProfileId.Value));
-            
-            profile.FirstName = request.Profile.FirstName;
-            profile.LastName = request.Profile.LastName;
+
+            profile.Update(request.Profile.FirstName, request.Profile.LastName);
             
             await _context.SaveChangesAsync(cancellationToken);
             

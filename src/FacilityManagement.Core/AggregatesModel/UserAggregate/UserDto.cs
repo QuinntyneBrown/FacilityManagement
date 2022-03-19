@@ -8,7 +8,7 @@ namespace FacilityManagement.Core
         public string UserName { get; set; }
         public string Password { get; set; }
         public byte[] Salt { get; set; }
-        public List<Role> Roles { get; set; }
-        public List<Profile> Profiles { get; set; }
+        public List<RoleDto> Roles { get; set; }
+        public List<ProfileDto> Profiles { get; set; }
     }
 }

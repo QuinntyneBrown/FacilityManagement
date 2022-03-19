@@ -41,7 +41,7 @@ namespace FacilityManagement.SharedKernel.Abstractions
                 Aggregate = GetType().Name,
                 AggregateDotNetType = GetType().AssemblyQualifiedName,
                 Data = JsonConvert.SerializeObject(@event),
-                StreamId = (Guid)type.GetProperty($"{type.Name}Id").GetValue(this, null),
+                //StreamId = (dynamic)type.GetProperty($"{type.Name}Id").GetValue(this, null)),
                 DotNetType = resolvedEventType.AssemblyQualifiedName,
                 Type = resolvedEventType.Name,
                 CreatedOn = @event.Created,

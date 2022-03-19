@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
     <ProjectReference Include="..\FacilityManagement.SharedKernel\FacilityManagement.SharedKernel.csproj" />
@@ -11,7 +11,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="StronglyTypedId" Version="1.0.0-beta05" />
+    <PackageReference Include="StronglyTypedId" Version="1.0.0-beta06" />
   </ItemGroup>
 
   <PropertyGroup>

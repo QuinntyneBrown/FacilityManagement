@@ -7,6 +7,7 @@ import { StrictHttpResponse as __StrictHttpResponse } from '../strict-http-respo
 import { Observable as __Observable } from 'rxjs';
 import { map as __map, filter as __filter } from 'rxjs/operators';
 
+import { CurrentUserResponse } from '../models/current-user-response';
 import { GetUserByIdResponse } from '../models/get-user-by-id-response';
 import { RemoveUserResponse } from '../models/remove-user-response';
 import { GetUsersResponse } from '../models/get-users-response';
@@ -21,6 +22,7 @@ import { GetUsersPageResponse } from '../models/get-users-page-response';
   providedIn: 'root',
 })
 class UserService extends __BaseService {
+  static readonly GetCurrentUserRoutePath = '/api/User/current';
   static readonly getUserByIdPath = '/api/User/{userId}';
   static readonly removeUserPath = '/api/User/{userId}';
   static readonly getUsersPath = '/api/User';
@@ -34,6 +36,39 @@ class UserService extends __BaseService {
     http: HttpClient
   ) {
     super(config, http);
+  }
+
+  /**
+   * @return Success
+   */
+  GetCurrentUserRouteResponse(): __Observable<__StrictHttpResponse<CurrentUserResponse>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    let req = new HttpRequest<any>(
+      'GET',
+      this.rootUrl + `/api/User/current`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<CurrentUserResponse>;
+      })
+    );
+  }
+  /**
+   * @return Success
+   */
+  GetCurrentUserRoute(): __Observable<CurrentUserResponse> {
+    return this.GetCurrentUserRouteResponse().pipe(
+      __map(_r => _r.body as CurrentUserResponse)
+    );
   }
 
   /**

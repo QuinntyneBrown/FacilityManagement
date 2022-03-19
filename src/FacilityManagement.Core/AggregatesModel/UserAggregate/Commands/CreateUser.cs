@@ -1,5 +1,6 @@
 using FacilityManagement.Core;
 using FacilityManagement.Core.Interfaces;
+using FacilityManagement.SharedKernel.Identity;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -32,25 +33,21 @@ namespace FacilityManagement.Core
     {
         private readonly IFacilityManagementDbContext _context;
         private readonly ILogger<CreateUserHandler> _logger;
+        private readonly IPasswordHasher _passwordHasher;
     
-        public CreateUserHandler(IFacilityManagementDbContext context, ILogger<CreateUserHandler> logger)
+        public CreateUserHandler(IFacilityManagementDbContext context, ILogger<CreateUserHandler> logger, IPasswordHasher passwordHasher)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _passwordHasher = passwordHasher ?? throw new ArgumentNullException(nameof(passwordHasher));
         }
     
         public async Task<CreateUserResponse> Handle(CreateUserRequest request, CancellationToken cancellationToken)
         {
-            var user = new User();
+            var user = new User(new CreateUser(request.User.UserName,request.User.Password, _passwordHasher));
             
             _context.Users.Add(user);
-            
-            user.UserName = request.User.UserName;
-            user.Password = request.User.Password;
-            user.Salt = request.User.Salt;
-            user.Roles = request.User.Roles;
-            user.Profiles = request.User.Profiles;
-            
+
             await _context.SaveChangesAsync(cancellationToken);
             
             return new ()

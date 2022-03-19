@@ -1,10 +1,10 @@
 /* tslint:disable */
-import { Profile } from './profile';
-import { Role } from './role';
+import { ProfileDto } from './profile-dto';
+import { RoleDto } from './role-dto';
 export interface UserDto {
   password?: string;
-  profiles?: Array<Profile>;
-  roles?: Array<Role>;
+  profiles?: Array<ProfileDto>;
+  roles?: Array<RoleDto>;
   salt?: ArrayBuffer;
   userId?: string;
   userName?: string;

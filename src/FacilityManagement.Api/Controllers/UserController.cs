@@ -1,5 +1,6 @@
 using FacilityManagement.Core;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Net;
@@ -21,6 +22,17 @@ namespace FacilityManagement.Api.Controllers
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
+
+        [AllowAnonymous]
+        [HttpGet("current", Name = "GetCurrentUserRoute")]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(CurrentUserResponse), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<CurrentUserResponse>> GetCurrent()
+        {
+            return await _mediator.Send(new CurrentUserRequest());
+        }
+
 
         [SwaggerOperation(
             Summary = "Get User by id.",

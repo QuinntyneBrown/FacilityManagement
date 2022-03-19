@@ -967,6 +967,34 @@
         }
       }
     },
+    "/api/User/current": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "operationId": "GetCurrentUserRoute",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/CurrentUserResponse"
+            }
+          }
+        }
+      }
+    },
     "/api/User/{userId}": {
       "get": {
         "tags": [
@@ -1249,17 +1277,6 @@
     }
   },
   "definitions": {
-    "AccessRight": {
-      "format": "int32",
-      "enum": [
-        0,
-        1,
-        2,
-        3,
-        4
-      ],
-      "type": "integer"
-    },
     "AddressDto": {
       "type": "object",
       "properties": {
@@ -1427,6 +1444,14 @@
           "items": {
             "type": "string"
           }
+        }
+      }
+    },
+    "CurrentUserResponse": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/UserDto"
         }
       }
     },
@@ -1842,32 +1867,6 @@
       ],
       "type": "integer"
     },
-    "Privilege": {
-      "type": "object",
-      "properties": {
-        "privilegeId": {
-          "$ref": "#/definitions/PrivilegeId"
-        },
-        "roleId": {
-          "$ref": "#/definitions/RoleId"
-        },
-        "accessRight": {
-          "$ref": "#/definitions/AccessRight"
-        },
-        "aggregate": {
-          "type": "string"
-        }
-      }
-    },
-    "PrivilegeId": {
-      "type": "object",
-      "properties": {
-        "value": {
-          "format": "uuid",
-          "type": "string"
-        }
-      }
-    },
     "ProblemDetails": {
       "type": "object",
       "properties": {
@@ -1890,20 +1889,6 @@
       },
       "additionalProperties": { }
     },
-    "Profile": {
-      "type": "object",
-      "properties": {
-        "profileId": {
-          "$ref": "#/definitions/ProfileId"
-        },
-        "firstName": {
-          "type": "string"
-        },
-        "lastName": {
-          "type": "string"
-        }
-      }
-    },
     "ProfileDto": {
       "type": "object",
       "properties": {
@@ -1916,17 +1901,19 @@
         },
         "lastName": {
           "type": "string"
+        },
+        "profileType": {
+          "$ref": "#/definitions/ProfileType"
         }
       }
     },
-    "ProfileId": {
-      "type": "object",
-      "properties": {
-        "value": {
-          "format": "uuid",
-          "type": "string"
-        }
-      }
+    "ProfileType": {
+      "format": "int32",
+      "enum": [
+        0,
+        1
+      ],
+      "type": "integer"
     },
     "RemoveDigitalAssetResponse": {
       "type": "object",
@@ -1998,24 +1985,6 @@
         }
       }
     },
-    "Role": {
-      "type": "object",
-      "properties": {
-        "roleId": {
-          "$ref": "#/definitions/RoleId"
-        },
-        "name": {
-          "type": "string"
-        },
-        "privileges": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Privilege"
-          },
-          "readOnly": true
-        }
-      }
-    },
     "RoleDto": {
       "type": "object",
       "properties": {
@@ -2024,15 +1993,6 @@
           "type": "string"
         },
         "name": {
-          "type": "string"
-        }
-      }
-    },
-    "RoleId": {
-      "type": "object",
-      "properties": {
-        "value": {
-          "format": "uuid",
           "type": "string"
         }
       }
@@ -2176,13 +2136,13 @@
         "roles": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Role"
+            "$ref": "#/definitions/RoleDto"
           }
         },
         "profiles": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Profile"
+            "$ref": "#/definitions/ProfileDto"
           }
         }
       }

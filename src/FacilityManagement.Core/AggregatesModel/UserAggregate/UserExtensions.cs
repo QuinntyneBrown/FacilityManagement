@@ -1,8 +1,4 @@
-using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Threading;
 
 namespace FacilityManagement.Core
 {
@@ -16,8 +12,8 @@ namespace FacilityManagement.Core
                 UserName = user.UserName,
                 Password = user.Password,
                 Salt = user.Salt,
-                Roles = user.Roles,
-                Profiles = user.Profiles,
+                Roles = user.Roles.ToDtos(),
+                Profiles = user.Profiles.ToDtos(),
             };
         }
         
@@ -30,6 +26,5 @@ namespace FacilityManagement.Core
         {
             return users.Select(x => x.ToDto()).ToList();
         }
-        
     }
 }

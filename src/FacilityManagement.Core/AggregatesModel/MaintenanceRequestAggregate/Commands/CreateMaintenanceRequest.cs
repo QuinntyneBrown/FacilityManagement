@@ -3,6 +3,7 @@ using FacilityManagement.SharedKernel.Identity;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using System.Text.Json.Serialization;
 using static FacilityManagement.Core.CoreConstants;
 
 namespace FacilityManagement.Core
@@ -30,6 +31,24 @@ namespace FacilityManagement.Core
         public string Phone { get; set; }
         public string Description { get; set; }
         public bool UnattendedUnitEntryAllowed { get; set; }
+
+        [JsonConstructor]
+        public CreateMaintenanceRequestRequest()
+        {
+
+        }
+
+        public CreateMaintenanceRequestRequest(Guid requestedByProfileId, string requestedByName, string street, string city, string province, string postalCode, string phone, string description, bool unattendedUnitEntryAllowed)
+        {
+            RequestedByProfileId = requestedByProfileId;
+            RequestedByName = requestedByName;
+            Address = new AddressDto() { Street = street, City = city, Province = province, PostalCode = postalCode };
+            Phone = phone;
+            Description = description;
+            UnattendedUnitEntryAllowed = unattendedUnitEntryAllowed;
+        }
+
+
     }
 
     public class CreateMaintenanceRequestResponse: ResponseBase

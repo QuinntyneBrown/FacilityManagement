@@ -44,11 +44,7 @@ namespace FacilityManagement.Core
         {
             var user = await _context.Users.SingleAsync(x => x.UserId == new UserId(request.User.UserId.Value));
             
-            user.UserName = request.User.UserName;
-            user.Password = request.User.Password;
-            user.Salt = request.User.Salt;
-            user.Roles = request.User.Roles;
-            user.Profiles = request.User.Profiles;
+
             
             await _context.SaveChangesAsync(cancellationToken);
             
