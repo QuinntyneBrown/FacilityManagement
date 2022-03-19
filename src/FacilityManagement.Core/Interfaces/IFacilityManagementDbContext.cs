@@ -1,6 +1,5 @@
+using FacilityManagement.SharedKernel.Abstractions;
 using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
-using System.Threading;
 
 namespace FacilityManagement.Core.Interfaces
 {
@@ -11,6 +10,7 @@ namespace FacilityManagement.Core.Interfaces
         DbSet<DigitalAsset> DigitalAssets { get; }
         DbSet<User> Users { get; }
         DbSet<Role> Roles { get; }
+        DbSet<StoredEvent> StoredEvents { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
         
     }

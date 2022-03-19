@@ -2,7 +2,10 @@
 {
     public enum MaintenanceRequestStatus
     {
-
+        New,
+        Received,
+        Started,
+        Completed
     }
 
     public enum UnitEntered

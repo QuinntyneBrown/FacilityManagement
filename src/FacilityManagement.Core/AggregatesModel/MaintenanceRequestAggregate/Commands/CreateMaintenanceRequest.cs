@@ -1,12 +1,7 @@
-using FacilityManagement.Core;
 using FacilityManagement.Core.Interfaces;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace FacilityManagement.Core
 {
@@ -18,16 +13,18 @@ namespace FacilityManagement.Core
             RuleFor(request => request.MaintenanceRequest).NotNull();
             RuleFor(request => request.MaintenanceRequest).SetValidator(new MaintenanceRequestValidator());
         }
-    
     }
+
     public class CreateMaintenanceRequestRequest: IRequest<CreateMaintenanceRequestResponse>
     {
         public MaintenanceRequestDto MaintenanceRequest { get; set; }
     }
+
     public class CreateMaintenanceRequestResponse: ResponseBase
     {
         public MaintenanceRequestDto MaintenanceRequest { get; set; }
     }
+
     public class CreateMaintenanceRequestHandler: IRequestHandler<CreateMaintenanceRequestRequest, CreateMaintenanceRequestResponse>
     {
         private readonly IFacilityManagementDbContext _context;
@@ -38,35 +35,21 @@ namespace FacilityManagement.Core
             _context = context ?? throw new ArgumentNullException(nameof(context));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
-    
+
         public async Task<CreateMaintenanceRequestResponse> Handle(CreateMaintenanceRequestRequest request, CancellationToken cancellationToken)
         {
-            var maintenanceRequest = new MaintenanceRequest();
+            var maintenanceRequest = new MaintenanceRequest(new CreateMaintenanceRequest()
+            {
+                RequestedByProfileId = request.MaintenanceRequest.RequestedByProfileId.Value,
+                RequestedByName = request.MaintenanceRequest.RequestedByName,
+                Address = Address.Create(request.MaintenanceRequest.Address.Street, request.MaintenanceRequest.Address.Unit.Value, request.MaintenanceRequest.Address.City, request.MaintenanceRequest.Address.Province, request.MaintenanceRequest.Address.PostalCode).Value,
+                Phone = request.MaintenanceRequest.Phone,
+                Description = request.MaintenanceRequest.Description,
+                UnattendedUnitEntryAllowed = request.MaintenanceRequest.UnattendedUnitEntryAllowed.Value
+            });
             
             _context.MaintenanceRequests.Add(maintenanceRequest);
-            
-            maintenanceRequest.RequestedByProfileId = new ProfileId(request.MaintenanceRequest.RequestedByProfileId.Value);
-            maintenanceRequest.RequestedByName = request.MaintenanceRequest.RequestedByName;
-            maintenanceRequest.Date = request.MaintenanceRequest.Date;
 
-            var addressDto = request.MaintenanceRequest.Address;
-            maintenanceRequest.Address = Address.Create(addressDto.Street,addressDto.City,addressDto.Province, addressDto.PostalCode).Value;
-            
-            maintenanceRequest.Phone = request.MaintenanceRequest.Phone;
-            maintenanceRequest.Description = request.MaintenanceRequest.Description;
-            maintenanceRequest.UnattendedUnitEntryAllowed = request.MaintenanceRequest.UnattendedUnitEntryAllowed.Value;
-            maintenanceRequest.ReceivedByProfileId = new ProfileId(request.MaintenanceRequest.ReceivedByProfileId.Value);
-            maintenanceRequest.ReceivedByName = request.MaintenanceRequest.ReceivedByName;
-            maintenanceRequest.ReceivedDate = request.MaintenanceRequest.ReceivedDate;
-            maintenanceRequest.WorkDetails = request.MaintenanceRequest.WorkDetails;
-            maintenanceRequest.WorkStarted = request.MaintenanceRequest.WorkStarted;
-            maintenanceRequest.WorkCompleted = request.MaintenanceRequest.WorkCompleted;
-            maintenanceRequest.WorkCompletedByName = request.MaintenanceRequest.WorkCompletedByName;
-            maintenanceRequest.UnitEntered = request.MaintenanceRequest.UnitEntered;
-
-            maintenanceRequest.Status = request.MaintenanceRequest.Status;
-
-            
             await _context.SaveChangesAsync(cancellationToken);
             
             return new ()

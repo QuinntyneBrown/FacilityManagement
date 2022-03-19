@@ -1742,6 +1742,12 @@
     },
     "MaintenanceRequestStatus": {
       "format": "int32",
+      "enum": [
+        0,
+        1,
+        2,
+        3
+      ],
       "type": "integer"
     },
     "ProblemDetails": {
