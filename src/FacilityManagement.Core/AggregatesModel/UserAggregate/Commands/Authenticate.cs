@@ -1,4 +1,5 @@
-/*using FacilityManagement.Core.Interfaces;
+using FacilityManagement.Core.Interfaces;
+using FacilityManagement.SharedKernel;
 using FacilityManagement.SharedKernel.Identity;
 using FluentValidation;
 using MediatR;
@@ -12,12 +13,12 @@ namespace FacilityManagement.Core
         {
             public Validator()
             {
-                RuleFor(x => x.Username).NotNull();
+                RuleFor(x => x.UserName).NotNull();
                 RuleFor(x => x.Password).NotNull();
             }
         }
 
-        public record Request(string Username, string Password) : IRequest<Response>;
+        public record Request(string UserName, string Password) : IRequest<Response>;
 
         public record Response(string AccessToken, Guid UserId);
 
@@ -25,44 +26,33 @@ namespace FacilityManagement.Core
         {
             private readonly IFacilityManagementDbContext _context;
             private readonly IPasswordHasher _passwordHasher;
-            private readonly IDiagnosticContext _diagnosticContext;
-            private readonly IOrchestrationHandler _orchestrationHandler;
+            private readonly ITokenBuilder _tokenBuilder;
 
-            public Handler(IFacilityManagementDbContext context, IPasswordHasher passwordHasher, IOrchestrationHandler orchestrationHandler, IDiagnosticContext diagnosticContext)
+            public Handler(IFacilityManagementDbContext context, IPasswordHasher passwordHasher, ITokenBuilder tokenBuilder)
             {
                 _context = context;
                 _passwordHasher = passwordHasher;
-                _diagnosticContext = diagnosticContext;
-                _orchestrationHandler = orchestrationHandler;
+                _tokenBuilder = tokenBuilder;
             }
 
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
-                using (Operation.Time("Users.Authenticate"))
-                {
-                    var user = await _context.Users
-                        .Include(x => x.Roles)
-                        .ThenInclude(x => x.Privileges)
-                        .SingleOrDefaultAsync(x => x.Username == request.Username);
+                var user = await _context.Users
+                    .SingleOrDefaultAsync(x => x.UserName == request.UserName);
 
-                    if (user == null)
-                        throw new Exception();
+                if (user == null)
+                    throw new Exception();
 
-                    if (!ValidateUser(user, _passwordHasher.HashPassword(user.Salt, request.Password)))
-                        throw new Exception();
+                if (!ValidateUser(user, _passwordHasher.HashPassword(user.Salt, request.Password)))
+                    throw new Exception();
 
-                    return await _orchestrationHandler.Handle<Response>(new BuildToken(user.Username), (tcs) => async message =>
-                    {
-                        switch (message)
-                        {
-                            case BuiltToken builtToken:
-                                await _orchestrationHandler.Publish(new AuthenticatedUser(user.Username));
-                                _diagnosticContext.Set("Username", request.Username);
-                                tcs.SetResult(new Response(builtToken.AccessToken, builtToken.UserId));
-                                break;
-                        }
-                    });
-                }
+                var token = _tokenBuilder
+                    .AddUsername(user.UserName)
+                    .AddClaim(new System.Security.Claims.Claim(SharedKernelConstants.ClaimTypes.UserId, $"{user.UserId}"))
+                    .AddClaim(new System.Security.Claims.Claim(SharedKernelConstants.ClaimTypes.Username, $"{user.UserName}"))
+                    .Build();
+
+                return new(token, user.UserId.Value);
             }
 
             public bool ValidateUser(User user, string transformedPassword)
@@ -75,4 +65,3 @@ namespace FacilityManagement.Core
         }
     }
 }
-*/

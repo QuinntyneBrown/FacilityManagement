@@ -1,5 +1,10 @@
 /* tslint:disable */
-import { MaintenanceRequestDto } from './maintenance-request-dto';
+import { AddressDto } from './address-dto';
 export interface CreateMaintenanceRequestRequest {
-  maintenanceRequest?: MaintenanceRequestDto;
+  address?: AddressDto;
+  description?: string;
+  phone?: string;
+  requestedByName?: string;
+  requestedByProfileId?: string;
+  unattendedUnitEntryAllowed?: boolean;
 }

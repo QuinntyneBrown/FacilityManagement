@@ -10,14 +10,23 @@ namespace FacilityManagement.Core
     {
         public CreateMaintenanceRequestValidator()
         {
-            RuleFor(request => request.MaintenanceRequest).NotNull();
-            RuleFor(request => request.MaintenanceRequest).SetValidator(new MaintenanceRequestValidator());
+            RuleFor(request => request.RequestedByProfileId).NotNull();
+            RuleFor(request => request.RequestedByName).NotEmpty().NotNull();
+            RuleFor(request => request.Phone).NotEmpty().NotNull();
+            RuleFor(request => request.UnattendedUnitEntryAllowed).NotNull();
+
+            RuleFor(request => request.Address).SetValidator(new AddressValidator());
         }
     }
 
     public class CreateMaintenanceRequestRequest: IRequest<CreateMaintenanceRequestResponse>
     {
-        public MaintenanceRequestDto MaintenanceRequest { get; set; }
+        public Guid RequestedByProfileId { get; set; }
+        public string RequestedByName { get; set; }
+        public AddressDto Address { get; set; }
+        public string Phone { get; set; }
+        public string Description { get; set; }
+        public bool UnattendedUnitEntryAllowed { get; set; }
     }
 
     public class CreateMaintenanceRequestResponse: ResponseBase
@@ -40,12 +49,12 @@ namespace FacilityManagement.Core
         {
             var maintenanceRequest = new MaintenanceRequest(new CreateMaintenanceRequest()
             {
-                RequestedByProfileId = request.MaintenanceRequest.RequestedByProfileId.Value,
-                RequestedByName = request.MaintenanceRequest.RequestedByName,
-                Address = Address.Create(request.MaintenanceRequest.Address.Street, request.MaintenanceRequest.Address.Unit.Value, request.MaintenanceRequest.Address.City, request.MaintenanceRequest.Address.Province, request.MaintenanceRequest.Address.PostalCode).Value,
-                Phone = request.MaintenanceRequest.Phone,
-                Description = request.MaintenanceRequest.Description,
-                UnattendedUnitEntryAllowed = request.MaintenanceRequest.UnattendedUnitEntryAllowed.Value
+                RequestedByProfileId = request.RequestedByProfileId,
+                RequestedByName = request.RequestedByName,
+                Address = Address.Create(request.Address.Street, request.Address.Unit.Value, request.Address.City, request.Address.Province, request.Address.PostalCode).Value,
+                Phone = request.Phone,
+                Description = request.Description,
+                UnattendedUnitEntryAllowed = request.UnattendedUnitEntryAllowed
             });
             
             _context.MaintenanceRequests.Add(maintenanceRequest);
