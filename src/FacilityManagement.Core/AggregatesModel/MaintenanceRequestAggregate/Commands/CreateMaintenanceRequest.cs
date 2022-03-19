@@ -1,4 +1,5 @@
 using FacilityManagement.Core.Interfaces;
+using FacilityManagement.SharedKernel.Identity;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -19,6 +20,7 @@ namespace FacilityManagement.Core
         }
     }
 
+    [AuthorizeResourceOperation(nameof(Operations.Write), nameof(Aggregates.User))]
     public class CreateMaintenanceRequestRequest: IRequest<CreateMaintenanceRequestResponse>
     {
         public Guid RequestedByProfileId { get; set; }

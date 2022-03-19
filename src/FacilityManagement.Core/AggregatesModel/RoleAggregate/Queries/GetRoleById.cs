@@ -3,14 +3,9 @@ using FacilityManagement.Core.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace FacilityManagement.Core
 {
-
     public class GetRoleByIdRequest: IRequest<GetRoleByIdResponse>
     {
         public Guid RoleId { get; set; }
@@ -36,7 +31,6 @@ namespace FacilityManagement.Core
                 Role = (await _context.Roles.AsNoTracking().SingleOrDefaultAsync(x => x.RoleId == new RoleId(request.RoleId))).ToDto()
             };
         }
-        
     }
 
 }
