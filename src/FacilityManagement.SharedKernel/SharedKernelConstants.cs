@@ -1,6 +1,4 @@
-﻿
-
-using FacilityManagement.SharedKernel.Identity;
+﻿using FacilityManagement.SharedKernel.Identity;
 
 namespace FacilityManagement.SharedKernel
 {

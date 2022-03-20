@@ -2,5 +2,7 @@ using FluentValidation;
 
 namespace FacilityManagement.Core
 {
-    public class MaintenanceRequestValidator: AbstractValidator<MaintenanceRequestDto> { }
+    public class MaintenanceRequestValidator: AbstractValidator<MaintenanceRequestDto> { 
+    
+    }
 }
