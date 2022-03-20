@@ -403,46 +403,6 @@
             }
           }
         }
-      },
-      "put": {
-        "tags": [
-          "MaintenanceRequest"
-        ],
-        "summary": "Update MaintenanceRequest.",
-        "description": "Update MaintenanceRequest.",
-        "operationId": "updateMaintenanceRequest",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/UpdateMaintenanceRequestRequest"
-            }
-          }
-        ],
-        "responses": {
-          "500": {
-            "description": "Server Error"
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
-            }
-          },
-          "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/UpdateMaintenanceRequestResponse"
-            }
-          }
-        }
       }
     },
     "/api/MaintenanceRequest/page/{pageSize}/{index}": {
@@ -486,6 +446,216 @@
             "description": "Success",
             "schema": {
               "$ref": "#/definitions/GetMaintenanceRequestsPageResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/MaintenanceRequest/receive": {
+      "put": {
+        "tags": [
+          "MaintenanceRequest"
+        ],
+        "summary": "Receive MaintenanceRequest.",
+        "description": "Receive MaintenanceRequest.",
+        "operationId": "receiveMaintenanceRequest",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/ReceiveMaintenanceRequestRequest"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ReceiveMaintenanceRequestResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/MaintenanceRequest/complete": {
+      "put": {
+        "tags": [
+          "MaintenanceRequest"
+        ],
+        "summary": "Complete MaintenanceRequest.",
+        "description": "Complete MaintenanceRequest.",
+        "operationId": "completeMaintenanceRequest",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/CompleteMaintenanceRequestRequest"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/CompleteMaintenanceRequestResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/MaintenanceRequest/start": {
+      "put": {
+        "tags": [
+          "MaintenanceRequest"
+        ],
+        "summary": "Start MaintenanceRequest.",
+        "description": "Start MaintenanceRequest.",
+        "operationId": "startMaintenanceRequest",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/StartMaintenanceRequestRequest"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/StartMaintenanceRequestResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/MaintenanceRequest/description": {
+      "put": {
+        "tags": [
+          "MaintenanceRequest"
+        ],
+        "summary": "Update MaintenanceRequest description.",
+        "description": "Update MaintenanceRequest description.",
+        "operationId": "updateMaintenanceRequestDescription",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/UpdateMaintenanceRequestDescriptionRequest"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UpdateMaintenanceRequestDescriptionResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/MaintenanceRequest/work-details": {
+      "put": {
+        "tags": [
+          "MaintenanceRequest"
+        ],
+        "summary": "Update MaintenanceRequest WorkDetails.",
+        "description": "Update MaintenanceRequest WorkDetails.",
+        "operationId": "updateMaintenanceRequestWorkDetails",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/UpdateMaintenanceRequestWorkDetailsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UpdateMaintenanceRequestWorkDetailsResponse"
             }
           }
         }
@@ -1321,6 +1491,36 @@
         }
       }
     },
+    "CompleteMaintenanceRequestRequest": {
+      "type": "object",
+      "properties": {
+        "maintenanceRequestId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "workCompletedByName": {
+          "type": "string"
+        },
+        "workCompleted": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "CompleteMaintenanceRequestResponse": {
+      "type": "object",
+      "properties": {
+        "maintenanceRequest": {
+          "$ref": "#/definitions/MaintenanceRequestDto"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "CreateDigitalAssetRequest": {
       "type": "object",
       "properties": {
@@ -1915,6 +2115,36 @@
       ],
       "type": "integer"
     },
+    "ReceiveMaintenanceRequestRequest": {
+      "type": "object",
+      "properties": {
+        "maintenanceRequestId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "receivedByName": {
+          "type": "string"
+        },
+        "receivedByProfileId": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
+    "ReceiveMaintenanceRequestResponse": {
+      "type": "object",
+      "properties": {
+        "maintenanceRequest": {
+          "$ref": "#/definitions/MaintenanceRequestDto"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "RemoveDigitalAssetResponse": {
       "type": "object",
       "properties": {
@@ -1997,6 +2227,36 @@
         }
       }
     },
+    "StartMaintenanceRequestRequest": {
+      "type": "object",
+      "properties": {
+        "maintenanceRequestId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "unitEntered": {
+          "$ref": "#/definitions/UnitEntered"
+        },
+        "workStarted": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "StartMaintenanceRequestResponse": {
+      "type": "object",
+      "properties": {
+        "maintenanceRequest": {
+          "$ref": "#/definitions/MaintenanceRequestDto"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "UnitEntered": {
       "format": "int32",
       "enum": [
@@ -2028,15 +2288,45 @@
         }
       }
     },
-    "UpdateMaintenanceRequestRequest": {
+    "UpdateMaintenanceRequestDescriptionRequest": {
+      "type": "object",
+      "properties": {
+        "maintenanceRequestId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "UpdateMaintenanceRequestDescriptionResponse": {
       "type": "object",
       "properties": {
         "maintenanceRequest": {
           "$ref": "#/definitions/MaintenanceRequestDto"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
-    "UpdateMaintenanceRequestResponse": {
+    "UpdateMaintenanceRequestWorkDetailsRequest": {
+      "type": "object",
+      "properties": {
+        "maintenanceRequestId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "workDetails": {
+          "type": "string"
+        }
+      }
+    },
+    "UpdateMaintenanceRequestWorkDetailsResponse": {
       "type": "object",
       "properties": {
         "maintenanceRequest": {

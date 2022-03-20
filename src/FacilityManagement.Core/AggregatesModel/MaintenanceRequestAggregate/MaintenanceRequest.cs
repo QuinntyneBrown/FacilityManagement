@@ -48,6 +48,9 @@ namespace FacilityManagement.Core
             Date = createMaintenanceRequest.Created;
         }
 
+        public void UpdateDescription(string description)
+            => When(new UpdateMaintenanceRequestDescription(description));
+
         public void When(UpdateMaintenanceRequestDescription updateMaintenanceRequestDescription)
         {
             Description = updateMaintenanceRequestDescription.Description;
@@ -61,6 +64,9 @@ namespace FacilityManagement.Core
             UnattendedUnitEntryAllowed = @event.UnattendedUnitEntryAllowed;
         }
 
+        public void Receive(string receivedByName, Guid receivedByProfileId)
+            => When(new ReceiveMaintenanceRequest(receivedByName, receivedByProfileId));
+
         public void When(ReceiveMaintenanceRequest @event)
         {
             ReceivedByName = @event.ReceivedByName;
@@ -68,17 +74,24 @@ namespace FacilityManagement.Core
             Status = MaintenanceRequestStatus.Received;
         }
 
+        public void Start(UnitEntered unitEntered, DateTime workStarted)
+            => When(new StartMaintenanceRequest(unitEntered, workStarted));
         public void When(StartMaintenanceRequest @event)
         {
             UnitEntered = @event.UnitEntered;
             WorkStarted = @event.WorkStarted;
             Status = MaintenanceRequestStatus.Started;
         }
+        public void UpdateWorkDetails(string workDetails)
+            => When(new UpdateMaintenanceRequestWorkDetails(workDetails));
 
         public void When(UpdateMaintenanceRequestWorkDetails @event)
         {
             WorkDetails = @event.WorkDetails;
         }
+
+        public void Complete(DateTime workCompleted, string workCompletedByName)
+            => When(new CompleteMaintenanceRequest(workCompletedByName, workCompleted));
 
         public void When(CompleteMaintenanceRequest @event)
         {

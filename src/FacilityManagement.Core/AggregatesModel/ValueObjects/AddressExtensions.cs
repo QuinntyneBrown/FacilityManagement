@@ -16,8 +16,6 @@ namespace FacilityManagement.Core
             };
         }
 
-
-
         public static async Task<List<AddressDto>> ToDtosAsync(this IQueryable<Address> addresses, CancellationToken cancellationToken)
         {
             return await addresses.Select(x => x.ToDto()).ToListAsync(cancellationToken);

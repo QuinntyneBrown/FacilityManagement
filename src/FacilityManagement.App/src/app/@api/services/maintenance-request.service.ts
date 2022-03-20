@@ -12,9 +12,17 @@ import { RemoveMaintenanceRequestResponse } from '../models/remove-maintenance-r
 import { GetMaintenanceRequestsResponse } from '../models/get-maintenance-requests-response';
 import { CreateMaintenanceRequestResponse } from '../models/create-maintenance-request-response';
 import { CreateMaintenanceRequestRequest } from '../models/create-maintenance-request-request';
-import { UpdateMaintenanceRequestResponse } from '../models/update-maintenance-request-response';
-import { UpdateMaintenanceRequestRequest } from '../models/update-maintenance-request-request';
 import { GetMaintenanceRequestsPageResponse } from '../models/get-maintenance-requests-page-response';
+import { ReceiveMaintenanceRequestResponse } from '../models/receive-maintenance-request-response';
+import { ReceiveMaintenanceRequestRequest } from '../models/receive-maintenance-request-request';
+import { CompleteMaintenanceRequestResponse } from '../models/complete-maintenance-request-response';
+import { CompleteMaintenanceRequestRequest } from '../models/complete-maintenance-request-request';
+import { StartMaintenanceRequestResponse } from '../models/start-maintenance-request-response';
+import { StartMaintenanceRequestRequest } from '../models/start-maintenance-request-request';
+import { UpdateMaintenanceRequestDescriptionResponse } from '../models/update-maintenance-request-description-response';
+import { UpdateMaintenanceRequestDescriptionRequest } from '../models/update-maintenance-request-description-request';
+import { UpdateMaintenanceRequestWorkDetailsResponse } from '../models/update-maintenance-request-work-details-response';
+import { UpdateMaintenanceRequestWorkDetailsRequest } from '../models/update-maintenance-request-work-details-request';
 @Injectable({
   providedIn: 'root',
 })
@@ -23,8 +31,12 @@ class MaintenanceRequestService extends __BaseService {
   static readonly removeMaintenanceRequestPath = '/api/MaintenanceRequest/{maintenanceRequestId}';
   static readonly getMaintenanceRequestsPath = '/api/MaintenanceRequest';
   static readonly createMaintenanceRequestPath = '/api/MaintenanceRequest';
-  static readonly updateMaintenanceRequestPath = '/api/MaintenanceRequest';
   static readonly getMaintenanceRequestsPagePath = '/api/MaintenanceRequest/page/{pageSize}/{index}';
+  static readonly receiveMaintenanceRequestPath = '/api/MaintenanceRequest/receive';
+  static readonly completeMaintenanceRequestPath = '/api/MaintenanceRequest/complete';
+  static readonly startMaintenanceRequestPath = '/api/MaintenanceRequest/start';
+  static readonly updateMaintenanceRequestDescriptionPath = '/api/MaintenanceRequest/description';
+  static readonly updateMaintenanceRequestWorkDetailsPath = '/api/MaintenanceRequest/work-details';
 
   constructor(
     config: __Configuration,
@@ -199,48 +211,6 @@ class MaintenanceRequestService extends __BaseService {
   }
 
   /**
-   * Update MaintenanceRequest.
-   *
-   * Update MaintenanceRequest.
-   * @param body undefined
-   * @return Success
-   */
-  updateMaintenanceRequestResponse(body?: UpdateMaintenanceRequestRequest): __Observable<__StrictHttpResponse<UpdateMaintenanceRequestResponse>> {
-    let __params = this.newParams();
-    let __headers = new HttpHeaders();
-    let __body: any = null;
-    __body = body;
-    let req = new HttpRequest<any>(
-      'PUT',
-      this.rootUrl + `/api/MaintenanceRequest`,
-      __body,
-      {
-        headers: __headers,
-        params: __params,
-        responseType: 'json'
-      });
-
-    return this.http.request<any>(req).pipe(
-      __filter(_r => _r instanceof HttpResponse),
-      __map((_r) => {
-        return _r as __StrictHttpResponse<UpdateMaintenanceRequestResponse>;
-      })
-    );
-  }
-  /**
-   * Update MaintenanceRequest.
-   *
-   * Update MaintenanceRequest.
-   * @param body undefined
-   * @return Success
-   */
-  updateMaintenanceRequest(body?: UpdateMaintenanceRequestRequest): __Observable<UpdateMaintenanceRequestResponse> {
-    return this.updateMaintenanceRequestResponse(body).pipe(
-      __map(_r => _r.body as UpdateMaintenanceRequestResponse)
-    );
-  }
-
-  /**
    * Get MaintenanceRequest Page.
    *
    * Get MaintenanceRequest Page.
@@ -290,6 +260,216 @@ class MaintenanceRequestService extends __BaseService {
   getMaintenanceRequestsPage(params: MaintenanceRequestService.GetMaintenanceRequestsPageParams): __Observable<GetMaintenanceRequestsPageResponse> {
     return this.getMaintenanceRequestsPageResponse(params).pipe(
       __map(_r => _r.body as GetMaintenanceRequestsPageResponse)
+    );
+  }
+
+  /**
+   * Receive MaintenanceRequest.
+   *
+   * Receive MaintenanceRequest.
+   * @param body undefined
+   * @return Success
+   */
+  receiveMaintenanceRequestResponse(body?: ReceiveMaintenanceRequestRequest): __Observable<__StrictHttpResponse<ReceiveMaintenanceRequestResponse>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    __body = body;
+    let req = new HttpRequest<any>(
+      'PUT',
+      this.rootUrl + `/api/MaintenanceRequest/receive`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<ReceiveMaintenanceRequestResponse>;
+      })
+    );
+  }
+  /**
+   * Receive MaintenanceRequest.
+   *
+   * Receive MaintenanceRequest.
+   * @param body undefined
+   * @return Success
+   */
+  receiveMaintenanceRequest(body?: ReceiveMaintenanceRequestRequest): __Observable<ReceiveMaintenanceRequestResponse> {
+    return this.receiveMaintenanceRequestResponse(body).pipe(
+      __map(_r => _r.body as ReceiveMaintenanceRequestResponse)
+    );
+  }
+
+  /**
+   * Complete MaintenanceRequest.
+   *
+   * Complete MaintenanceRequest.
+   * @param body undefined
+   * @return Success
+   */
+  completeMaintenanceRequestResponse(body?: CompleteMaintenanceRequestRequest): __Observable<__StrictHttpResponse<CompleteMaintenanceRequestResponse>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    __body = body;
+    let req = new HttpRequest<any>(
+      'PUT',
+      this.rootUrl + `/api/MaintenanceRequest/complete`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<CompleteMaintenanceRequestResponse>;
+      })
+    );
+  }
+  /**
+   * Complete MaintenanceRequest.
+   *
+   * Complete MaintenanceRequest.
+   * @param body undefined
+   * @return Success
+   */
+  completeMaintenanceRequest(body?: CompleteMaintenanceRequestRequest): __Observable<CompleteMaintenanceRequestResponse> {
+    return this.completeMaintenanceRequestResponse(body).pipe(
+      __map(_r => _r.body as CompleteMaintenanceRequestResponse)
+    );
+  }
+
+  /**
+   * Start MaintenanceRequest.
+   *
+   * Start MaintenanceRequest.
+   * @param body undefined
+   * @return Success
+   */
+  startMaintenanceRequestResponse(body?: StartMaintenanceRequestRequest): __Observable<__StrictHttpResponse<StartMaintenanceRequestResponse>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    __body = body;
+    let req = new HttpRequest<any>(
+      'PUT',
+      this.rootUrl + `/api/MaintenanceRequest/start`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<StartMaintenanceRequestResponse>;
+      })
+    );
+  }
+  /**
+   * Start MaintenanceRequest.
+   *
+   * Start MaintenanceRequest.
+   * @param body undefined
+   * @return Success
+   */
+  startMaintenanceRequest(body?: StartMaintenanceRequestRequest): __Observable<StartMaintenanceRequestResponse> {
+    return this.startMaintenanceRequestResponse(body).pipe(
+      __map(_r => _r.body as StartMaintenanceRequestResponse)
+    );
+  }
+
+  /**
+   * Update MaintenanceRequest description.
+   *
+   * Update MaintenanceRequest description.
+   * @param body undefined
+   * @return Success
+   */
+  updateMaintenanceRequestDescriptionResponse(body?: UpdateMaintenanceRequestDescriptionRequest): __Observable<__StrictHttpResponse<UpdateMaintenanceRequestDescriptionResponse>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    __body = body;
+    let req = new HttpRequest<any>(
+      'PUT',
+      this.rootUrl + `/api/MaintenanceRequest/description`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<UpdateMaintenanceRequestDescriptionResponse>;
+      })
+    );
+  }
+  /**
+   * Update MaintenanceRequest description.
+   *
+   * Update MaintenanceRequest description.
+   * @param body undefined
+   * @return Success
+   */
+  updateMaintenanceRequestDescription(body?: UpdateMaintenanceRequestDescriptionRequest): __Observable<UpdateMaintenanceRequestDescriptionResponse> {
+    return this.updateMaintenanceRequestDescriptionResponse(body).pipe(
+      __map(_r => _r.body as UpdateMaintenanceRequestDescriptionResponse)
+    );
+  }
+
+  /**
+   * Update MaintenanceRequest WorkDetails.
+   *
+   * Update MaintenanceRequest WorkDetails.
+   * @param body undefined
+   * @return Success
+   */
+  updateMaintenanceRequestWorkDetailsResponse(body?: UpdateMaintenanceRequestWorkDetailsRequest): __Observable<__StrictHttpResponse<UpdateMaintenanceRequestWorkDetailsResponse>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    __body = body;
+    let req = new HttpRequest<any>(
+      'PUT',
+      this.rootUrl + `/api/MaintenanceRequest/work-details`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<UpdateMaintenanceRequestWorkDetailsResponse>;
+      })
+    );
+  }
+  /**
+   * Update MaintenanceRequest WorkDetails.
+   *
+   * Update MaintenanceRequest WorkDetails.
+   * @param body undefined
+   * @return Success
+   */
+  updateMaintenanceRequestWorkDetails(body?: UpdateMaintenanceRequestWorkDetailsRequest): __Observable<UpdateMaintenanceRequestWorkDetailsResponse> {
+    return this.updateMaintenanceRequestWorkDetailsResponse(body).pipe(
+      __map(_r => _r.body as UpdateMaintenanceRequestWorkDetailsResponse)
     );
   }
 }

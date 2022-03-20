@@ -1,16 +1,14 @@
-using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
 using FacilityManagement.Core;
 using MediatR;
-using System;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Annotations;
+using System.Net;
 using System.Net.Mime;
 
 namespace FacilityManagement.Api.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     [Produces(MediaTypeNames.Application.Json)]
@@ -96,25 +94,105 @@ namespace FacilityManagement.Api.Controllers
         }
         
         [SwaggerOperation(
-            Summary = "Update MaintenanceRequest.",
-            Description = @"Update MaintenanceRequest."
+            Summary = "Receive MaintenanceRequest.",
+            Description = @"Receive MaintenanceRequest."
         )]
-        [HttpPut(Name = "updateMaintenanceRequest")]
+        [HttpPut("receive", Name = "receiveMaintenanceRequest")]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
-        [ProducesResponseType(typeof(UpdateMaintenanceRequestResponse), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<UpdateMaintenanceRequestResponse>> Update([FromBody]UpdateMaintenanceRequestRequest request, CancellationToken cancellationToken)
+        [ProducesResponseType(typeof(ReceiveMaintenanceRequestResponse), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<ReceiveMaintenanceRequestResponse>> Receive([FromBody]ReceiveMaintenanceRequestRequest request, CancellationToken cancellationToken)
         {
             _logger.LogInformation(
                 "----- Sending command: {CommandName} - {IdProperty}: {CommandId} ({@Command})",
-                nameof(UpdateMaintenanceRequestRequest),
-                nameof(request.MaintenanceRequest.MaintenanceRequestId),
-                request.MaintenanceRequest.MaintenanceRequestId,
+                nameof(ReceiveMaintenanceRequestRequest),
+                nameof(request.MaintenanceRequestId),
+                request.MaintenanceRequestId,
                 request);
         
             return await _mediator.Send(request, cancellationToken);
         }
-        
+
+        [SwaggerOperation(
+            Summary = "Complete MaintenanceRequest.",
+            Description = @"Complete MaintenanceRequest."
+        )]
+        [HttpPut("complete", Name = "completeMaintenanceRequest")]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(CompleteMaintenanceRequestResponse), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<CompleteMaintenanceRequestResponse>> Complete([FromBody] CompleteMaintenanceRequestRequest request, CancellationToken cancellationToken)
+        {
+            _logger.LogInformation(
+                "----- Sending command: {CommandName} - {IdProperty}: {CommandId} ({@Command})",
+                nameof(CompleteMaintenanceRequestRequest),
+                nameof(request.MaintenanceRequestId),
+                request.MaintenanceRequestId,
+                request);
+
+            return await _mediator.Send(request, cancellationToken);
+        }
+
+        [SwaggerOperation(
+            Summary = "Start MaintenanceRequest.",
+            Description = @"Start MaintenanceRequest."
+        )]
+        [HttpPut("start", Name = "startMaintenanceRequest")]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(StartMaintenanceRequestResponse), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<StartMaintenanceRequestResponse>> Start([FromBody] StartMaintenanceRequestRequest request, CancellationToken cancellationToken)
+        {
+            _logger.LogInformation(
+                "----- Sending command: {CommandName} - {IdProperty}: {CommandId} ({@Command})",
+                nameof(StartMaintenanceRequestRequest),
+                nameof(request.MaintenanceRequestId),
+                request.MaintenanceRequestId,
+                request);
+
+            return await _mediator.Send(request, cancellationToken);
+        }
+
+        [SwaggerOperation(
+            Summary = "Update MaintenanceRequest description.",
+            Description = @"Update MaintenanceRequest description."
+        )]
+        [HttpPut("description", Name = "updateMaintenanceRequestDescription")]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(UpdateMaintenanceRequestDescriptionResponse), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<UpdateMaintenanceRequestDescriptionResponse>> UpdateDescription([FromBody] UpdateMaintenanceRequestDescriptionRequest request, CancellationToken cancellationToken)
+        {
+            _logger.LogInformation(
+                "----- Sending command: {CommandName} - {IdProperty}: {CommandId} ({@Command})",
+                nameof(UpdateMaintenanceRequestDescriptionRequest),
+                nameof(request.MaintenanceRequestId),
+                request.MaintenanceRequestId,
+                request);
+
+            return await _mediator.Send(request, cancellationToken);
+        }
+
+        [SwaggerOperation(
+            Summary = "Update MaintenanceRequest WorkDetails.",
+            Description = @"Update MaintenanceRequest WorkDetails."
+        )]
+        [HttpPut("work-details", Name = "updateMaintenanceRequestWorkDetails")]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(UpdateMaintenanceRequestWorkDetailsResponse), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<UpdateMaintenanceRequestWorkDetailsResponse>> UpdateWorkDetails([FromBody] UpdateMaintenanceRequestWorkDetailsRequest request, CancellationToken cancellationToken)
+        {
+            _logger.LogInformation(
+                "----- Sending command: {CommandName} - {IdProperty}: {CommandId} ({@Command})",
+                nameof(UpdateMaintenanceRequestWorkDetailsRequest),
+                nameof(request.MaintenanceRequestId),
+                request.MaintenanceRequestId,
+                request);
+
+            return await _mediator.Send(request, cancellationToken);
+        }
+
         [SwaggerOperation(
             Summary = "Delete MaintenanceRequest.",
             Description = @"Delete MaintenanceRequest."
